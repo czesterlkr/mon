@@ -29,6 +29,7 @@ http://http://localhost:8080/
 ## Zmiany w encjach
 
 Po dokonaniu zmian na encjach, aby wgrać zmiany na bazę danych należy:
+
 1. Wywołać polecenie:
 ```sh
 $ mvn spring-boot:run
