@@ -17,6 +17,8 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     List<User> findAllByActivatedIsFalseAndCreatedDateBefore(DateTime dateTime);
 
+    List<User> findAllByEmployeeFace(boolean active);
+
     User findOneByLogin(String login);
 
     User findOneByEmail(String email);

@@ -3,40 +3,33 @@ package mon.web.rest.dto;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.hibernate.validator.constraints.Email;
+import mon.domain.User;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
-import java.util.List;
 
+/**
+ * Created by kalipiec on 2015-03-26.
+ */
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserDTO {
+public class SimpleUserDTO {
 
     @Pattern(regexp = "^[a-z0-9]*$")
     @NotNull
     @Size(min = 1, max = 50)
-    private String login;
+    public String login;
 
-    @NotNull
-    @Size(min = 5, max = 100)
-    private String password;
 
     @Size(max = 50)
-    private String firstName;
+    public String firstName;
 
     @Size(max = 50)
-    private String lastName;
+    public String lastName;
 
-    @Email
-    @Size(min = 5, max = 100)
-    private String email;
-
-    @Size(min = 2, max = 5)
-    private String langKey;
-
-    private List<String> roles;
-
+    public static SimpleUserDTO fromUser(User user) {
+        return new SimpleUserDTO(user.getLogin(), user.getFirstName(), user.getLastName());
+    }
 }

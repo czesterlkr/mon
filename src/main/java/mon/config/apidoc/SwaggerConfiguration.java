@@ -18,7 +18,7 @@ import org.springframework.util.StopWatch;
 
 /**
  * Swagger configuration.
- *
+ * <p/>
  * Warning! When having a lot of REST endpoints, Swagger can become a performance issue. In that
  * case, you can use a specific Spring profile for this class, so that only front-end developers
  * have access to the Swagger view.
@@ -31,6 +31,8 @@ public class SwaggerConfiguration implements EnvironmentAware {
     private final Logger log = LoggerFactory.getLogger(SwaggerConfiguration.class);
 
     public static final String DEFAULT_INCLUDE_PATTERN = "/api/.*";
+
+    public static final String WEBSERVICE_INCLUDE_PATTERN = "/webservice/.*";
 
     private RelaxedPropertyResolver propertyResolver;
 
@@ -50,7 +52,7 @@ public class SwaggerConfiguration implements EnvironmentAware {
         SwaggerSpringMvcPlugin swaggerSpringMvcPlugin = new SwaggerSpringMvcPlugin(springSwaggerConfig)
             .apiInfo(apiInfo())
             .genericModelSubstitutes(ResponseEntity.class)
-            .includePatterns(DEFAULT_INCLUDE_PATTERN);
+            .includePatterns(DEFAULT_INCLUDE_PATTERN, WEBSERVICE_INCLUDE_PATTERN);
 
         swaggerSpringMvcPlugin.build();
         watch.stop();
@@ -63,11 +65,11 @@ public class SwaggerConfiguration implements EnvironmentAware {
      */
     private ApiInfo apiInfo() {
         return new ApiInfo(
-                propertyResolver.getProperty("title"),
-                propertyResolver.getProperty("description"),
-                propertyResolver.getProperty("termsOfServiceUrl"),
-                propertyResolver.getProperty("contact"),
-                propertyResolver.getProperty("license"),
-                propertyResolver.getProperty("licenseUrl"));
+            propertyResolver.getProperty("title"),
+            propertyResolver.getProperty("description"),
+            propertyResolver.getProperty("termsOfServiceUrl"),
+            propertyResolver.getProperty("contact"),
+            propertyResolver.getProperty("license"),
+            propertyResolver.getProperty("licenseUrl"));
     }
 }
