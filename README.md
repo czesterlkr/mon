@@ -25,6 +25,19 @@ Jeżeli dociągnięcie zależności maven'owych oraz uruchomienie aplikacji powi
 ```sh
 http://http://localhost:8080/
 ```
+
+## Zmiany w encjach
+
+Po dokonaniu zmian na encjach, aby wgrać zmiany na bazę danych należy:
+1. Wywołać polecenie:
+```sh
+$ mvn spring-boot:run
+```
+2. Zostanie wygenerowany plik z changelog'iem w ścieżce src/main/resources/config/liquibase/changelog. Należy więc include'ować ten plik w pliku master.xml (katalog wyżej), poprzez dodanie kolejnego wpisu include file. Np.:
+```sh
+<include file="classpath:config/liquibase/changelog/20150326210850_changelog.xml" relativeToChangelogFile="false"/>
+```
+3. Uruchomić aplikację w sposób dotychczasowy. Patrz punkt **Uruchomienie**
  
  [1]:https://jhipster.github.io/installation.html
  [2]:https://jhipster.github.io/video_tutorial.html
