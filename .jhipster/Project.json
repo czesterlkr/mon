@@ -1,0 +1,24 @@
+{
+    "relationships": [],
+    "fields": [
+        {
+            "fieldId": 1,
+            "fieldName": "name",
+            "fieldType": "String",
+            "fieldNameCapitalized": "Name",
+            "fieldNameUnderscored": "name",
+            "fieldValidate": true,
+            "fieldValidateRules": []
+        }
+    ],
+    "fieldsContainOwnerManyToMany": false,
+    "fieldsContainOneToMany": false,
+    "fieldsContainLocalDate": false,
+    "fieldsContainCustomTime": false,
+    "fieldsContainBigDecimal": false,
+    "fieldsContainDateTime": false,
+    "fieldsContainDate": false,
+    "changelogDate": "20150320090536",
+    "pagination": "pager",
+    "validation": true
+}

@@ -1,0 +1,19 @@
+{
+  "generator-jhipster": {
+    "baseName": "mon",
+    "packageName": "mon",
+    "packageFolder": "mon",
+    "authenticationType": "session",
+    "hibernateCache": "no",
+    "clusteredHttpSession": "no",
+    "websocket": "no",
+    "databaseType": "sql",
+    "devDatabaseType": "postgresql",
+    "prodDatabaseType": "postgresql",
+    "useCompass": false,
+    "buildTool": "maven",
+    "frontendBuilder": "grunt",
+    "javaVersion": "7",
+    "rememberMeKey": "aadad34fa4e4632edcdcbd05f630c7aeb60dfdb7"
+  }
+}

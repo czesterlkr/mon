@@ -1,0 +1,24 @@
+{
+    "register": {
+        "title": "Dodawanie pracownika",
+        "form": {
+            "button": "Dodaj"
+        },
+        "messages": {
+            "validate": {
+                "login": {
+                    "required": "Twój login jest wymagany.",
+                    "minlength": "Twój login musi mieć przynajmniej 1 literę",
+                    "maxlength": "Twój login nie może być dłuższy niż 50 liter",
+                    "pattern": "Twój login może zawierać tylko małe litery i cyfry"
+                }
+            },
+            "success": "<strong>Dodano!</strong> Sprawdź mail w celu potwierdznia.",
+            "error": {
+                "fail": "<strong>dodawanie nie powiodło się!</strong> Spróbuj ponownie później.",
+                "userexists": "<strong>Login jest zajęty!</strong> Wybierz inny.",
+                "emailexists": "<strong>E-mail istnieje w systemie!</strong> Wybierz inny."
+            }
+        }
+    }
+}

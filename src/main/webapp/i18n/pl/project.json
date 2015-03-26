@@ -1,0 +1,18 @@
+{
+    "monApp": {
+        "project" : {
+            "home": {
+                "title": "Projekty",
+                "createLabel": "Dodaj projekt",
+                "createOrEditLabel": "Stwórz/edytuj projekt"
+            },
+            "delete": {
+                "question": "Czy na pewno chcesz usunąć projekt {{ id }}?"
+            },
+            "detail": {
+                "title": "Projekt"
+            },
+            "name": "Nazwa"
+        }
+    }
+}
