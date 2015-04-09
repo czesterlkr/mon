@@ -1,0 +1,19 @@
+{
+    "monApp": {
+        "kindOfHoliday" : {
+            "home": {
+                "title": "KindOfHolidays",
+                "createLabel": "Créer un nouveau KindOfHoliday",
+                "createOrEditLabel": "Créer ou éditer un KindOfHoliday"
+            },
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le KindOfHoliday {{ id }} ?"
+            },
+            "detail": {
+                "title": "KindOfHoliday"
+            },
+            "name": "Name"
+        }
+    }
+}
+

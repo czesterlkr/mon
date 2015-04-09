@@ -1,0 +1,18 @@
+{
+    "monApp": {
+        "statusOfHoliday" : {
+            "home": {
+                "title": "Status urlopu",
+                "createLabel": "Dodaj nowy status urlopu",
+                "createOrEditLabel": "Dodaj lub edytuj status urlopu"
+            },
+            "delete": {
+                "question": "Czy jesteś pewien, że chcesz usunąć status urlopu o id: {{ id }}?"
+            },
+            "detail": {
+                "title": "Status urlopu"
+            },
+            "name": "Nazwa"
+        }
+    }
+}

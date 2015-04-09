@@ -1,0 +1,24 @@
+{
+    "monApp": {
+        "holiday" : {
+            "home": {
+                "title": "Urlopy",
+                "createLabel": "Utwórz urlop",
+                "createOrEditLabel": "Utwórz lub edytuj urlop"
+            },
+            "delete": {
+                "question": "Czy jesteś pewien, że chcesz usunąć urlop o id: {{ id }}?"
+            },
+            "detail": {
+                "title": "Urlop"
+            },
+            "fromDate": "Od",
+            "toDate": "Do",
+            "requestDate": "Data wniosku",
+            "comment": "Uwagi",
+            "holiday_kindOfHoliday": "Rodzaj",
+            "holiday_statusOfHoliday": "Status",
+            "holiday_user": "Pracownik"
+        }
+    }
+}

@@ -1,0 +1,25 @@
+{
+    "monApp": {
+        "holiday" : {
+            "home": {
+                "title": "Holidays",
+                "createLabel": "Créer un nouveau Holiday",
+                "createOrEditLabel": "Créer ou éditer un Holiday"
+            },
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Holiday {{ id }} ?"
+            },
+            "detail": {
+                "title": "Holiday"
+            },
+            "fromDate": "FromDate",
+            "toDate": "ToDate",
+            "requestDate": "RequestDate",
+            "comment": "Comment",
+            "holiday_kindOfHoliday": "holiday_kindOfHoliday",
+            "holiday_statusOfHoliday": "holiday_statusOfHoliday",
+            "holiday_user": "holiday_user"
+        }
+    }
+}
+

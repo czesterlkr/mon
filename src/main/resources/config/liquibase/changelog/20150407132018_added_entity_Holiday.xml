@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <property name="now" value="now()" dbms="mysql,h2"/>
+    <property name="now" value="current_timestamp" dbms="postgresql"/>
+
+    <!--
+        Added the entity Holiday.
+    -->
+    <changeSet id="20150407132018" author="jhipster">
+        <createTable tableName="T_HOLIDAY">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="from_date" type="date">
+                <constraints nullable="false" />
+            </column>
+            <column name="to_date" type="date">
+                <constraints nullable="false" />
+            </column>
+            <column name="request_date" type="date"/>
+            <column name="comment" type="varchar(255)"/>
+            <column name="holiday_kindofholiday_id" type="bigint"/>
+            <column name="holiday_statusofholiday_id" type="bigint"/>
+            <column name="holiday_user_id" type="bigint"/>
+        </createTable>
+        
+        <addForeignKeyConstraint baseColumnNames="holiday_kindofholiday_id"
+                                 baseTableName="T_HOLIDAY"
+                                 constraintName="fk_holiday_holiday_kindofholiday_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="T_KINDOFHOLIDAY"/>
+
+        <addForeignKeyConstraint baseColumnNames="holiday_statusofholiday_id"
+                                 baseTableName="T_HOLIDAY"
+                                 constraintName="fk_holiday_holiday_statusofholiday_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="T_STATUSOFHOLIDAY"/>
+
+        <addForeignKeyConstraint baseColumnNames="holiday_user_id"
+                                 baseTableName="T_HOLIDAY"
+                                 constraintName="fk_holiday_holiday_user_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="T_USER"/>
+
+    </changeSet>
+</databaseChangeLog>

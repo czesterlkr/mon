@@ -1,0 +1,84 @@
+{
+    "relationships": [
+        {
+            "relationshipId": 1,
+            "relationshipName": "holiday_kindOfHoliday",
+            "relationshipNameCapitalized": "Holiday_kindOfHoliday",
+            "relationshipFieldName": "holiday_kindOfHoliday",
+            "otherEntityName": "kindOfHoliday",
+            "relationshipType": "many-to-one",
+            "otherEntityNameCapitalized": "KindOfHoliday",
+            "otherEntityField": "name"
+        },
+        {
+            "relationshipId": 2,
+            "relationshipName": "holiday_statusOfHoliday",
+            "relationshipNameCapitalized": "Holiday_statusOfHoliday",
+            "relationshipFieldName": "holiday_statusOfHoliday",
+            "otherEntityName": "statusOfHoliday",
+            "relationshipType": "many-to-one",
+            "otherEntityNameCapitalized": "StatusOfHoliday",
+            "otherEntityField": "name"
+        },
+        {
+            "relationshipId": 3,
+            "relationshipName": "holiday_user",
+            "relationshipNameCapitalized": "Holiday_user",
+            "relationshipFieldName": "holiday_user",
+            "otherEntityName": "user",
+            "relationshipType": "many-to-one",
+            "otherEntityNameCapitalized": "User",
+            "otherEntityField": "lastName"
+        }
+    ],
+    "fields": [
+        {
+            "fieldId": 1,
+            "fieldName": "fromDate",
+            "fieldType": "LocalDate",
+            "fieldNameCapitalized": "FromDate",
+            "fieldNameUnderscored": "from_date",
+            "fieldValidate": true,
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldId": 2,
+            "fieldName": "toDate",
+            "fieldType": "LocalDate",
+            "fieldNameCapitalized": "ToDate",
+            "fieldNameUnderscored": "to_date",
+            "fieldValidate": true,
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldId": 3,
+            "fieldName": "requestDate",
+            "fieldType": "LocalDate",
+            "fieldNameCapitalized": "RequestDate",
+            "fieldNameUnderscored": "request_date",
+            "fieldValidate": false
+        },
+        {
+            "fieldId": 4,
+            "fieldName": "comment",
+            "fieldType": "String",
+            "fieldNameCapitalized": "Comment",
+            "fieldNameUnderscored": "comment",
+            "fieldValidate": false
+        }
+    ],
+    "fieldsContainOwnerManyToMany": false,
+    "fieldsContainOneToMany": false,
+    "fieldsContainLocalDate": true,
+    "fieldsContainCustomTime": true,
+    "fieldsContainBigDecimal": false,
+    "fieldsContainDateTime": false,
+    "fieldsContainDate": false,
+    "changelogDate": "20150407132018",
+    "pagination": "pager",
+    "validation": true
+}

@@ -1,0 +1,18 @@
+{
+    "monApp": {
+        "kindOfHoliday" : {
+            "home": {
+                "title": "Rodzaj urlopu",
+                "createLabel": "Dodaj nowy rodzaj urlopu",
+                "createOrEditLabel": "Dodaj lub edytuj rodzaj urlopu"
+            },
+            "delete": {
+                "question": "Czy jesteś pewien, że chcesz usunąć rodzaj urlopu o id: {{ id }}?"
+            },
+            "detail": {
+                "title": "Rodzaj urlopu"
+            },
+            "name": "Nazwa"
+        }
+    }
+}

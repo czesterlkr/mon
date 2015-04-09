@@ -1,0 +1,19 @@
+{
+    "monApp": {
+        "statusOfHoliday" : {
+            "home": {
+                "title": "StatusOfHolidays",
+                "createLabel": "Créer un nouveau StatusOfHoliday",
+                "createOrEditLabel": "Créer ou éditer un StatusOfHoliday"
+            },
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le StatusOfHoliday {{ id }} ?"
+            },
+            "detail": {
+                "title": "StatusOfHoliday"
+            },
+            "name": "Name"
+        }
+    }
+}
+

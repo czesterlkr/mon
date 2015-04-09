@@ -1,0 +1,78 @@
+
+<div>
+    <h2><span translate="monApp.holiday.detail.title">Holiday</span> {{holiday.id}}</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th translate="entity.detail.field">Field</th>
+                    <th translate="entity.detail.value">Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <span translate="monApp.holiday.fromDate">FromDate</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{holiday.fromDate}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="monApp.holiday.toDate">ToDate</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{holiday.toDate}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="monApp.holiday.requestDate">RequestDate</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{holiday.requestDate}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="monApp.holiday.comment">Comment</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{holiday.comment}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="monApp.holiday.holiday_kindOfHoliday">holiday_kindOfHoliday</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{holiday.holiday_kindOfHoliday.name}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="monApp.holiday.holiday_statusOfHoliday">holiday_statusOfHoliday</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{holiday.holiday_statusOfHoliday.name}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="monApp.holiday.holiday_user">holiday_user</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{holiday.holiday_user.lastName}}" readonly>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit"
+            ui-sref="holiday"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+</div>

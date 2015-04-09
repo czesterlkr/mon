@@ -7,6 +7,9 @@
             "entities": {
                 "main": "Entities",
                 "project": "Project",
+                "kindOfHoliday": "Kind Of Holiday",
+                "statusOfHoliday": "Status Of Holiday",
+                "holiday": "Holiday",
                 "additionalEntity": "JHipster will add addtional entities"
             },
             "account": {

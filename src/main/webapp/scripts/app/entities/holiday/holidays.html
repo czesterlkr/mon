@@ -1,0 +1,173 @@
+<div>
+    user
+    <h2 translate="monApp.holiday.home.title">Holiday</h2>
+
+    <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#saveHolidayModal" ng-click="clear()">
+        <span class="glyphicon glyphicon-flash"></span> <span translate="monApp.holiday.home.createLabel">Create a new Holiday</span>
+    </button>
+    <div class="modal fade" id="saveHolidayModal" tabindex="-1" role="dialog" aria-labelledby="myHolidayLabel"
+         aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form name="editForm" role="form" novalidate ng-submit="create()" show-validation>
+
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                                ng-click="clear()">&times;</button>
+                        <h4 class="modal-title" id="myHolidayLabel" translate="monApp.holiday.home.createOrEditLabel">Create or edit a Holiday</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group" style="display: none;">
+                            <label>ID</label>
+                            <input type="text" class="form-control" name="id"
+                                   ng-model="holiday.id" readonly>
+                        </div>
+
+                        <div class="form-group">
+                            <label translate="monApp.holiday.fromDate">FromDate</label>
+                            <input type="date" class="form-control" name="fromDate"
+                                   ng-model="holiday.fromDate" required>
+
+                            <div ng-show="editForm.fromDate.$invalid">
+                                <p class="help-block"
+                                   ng-show="editForm.fromDate.$error.required" translate="entity.validation.required">
+                                    This field is required.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label translate="monApp.holiday.toDate">ToDate</label>
+                            <input type="date" class="form-control" name="toDate"
+                                   ng-model="holiday.toDate" required>
+
+                            <div ng-show="editForm.toDate.$invalid">
+                                <p class="help-block"
+                                   ng-show="editForm.toDate.$error.required" translate="entity.validation.required">
+                                    This field is required.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label translate="monApp.holiday.requestDate">RequestDate</label>
+                            <input type="date" class="form-control" name="requestDate"
+                                   ng-model="holiday.requestDate">
+
+                        </div>
+                        <div class="form-group">
+                            <label translate="monApp.holiday.comment">Comment</label>
+                            <input type="text" class="form-control" name="comment"
+                                   ng-model="holiday.comment">
+
+                        </div>
+
+                        <div class="form-group">
+                            <label translate="monApp.holiday.holiday_kindOfHoliday">holiday_kindOfHoliday</label>
+                            <select class="form-control" name="holiday_kindOfHoliday" ng-model="holiday.holiday_kindOfHoliday.id" ng-options="kindOfHoliday.id as kindOfHoliday.name for kindOfHoliday in kindofholidays">
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label translate="monApp.holiday.holiday_statusOfHoliday">holiday_statusOfHoliday</label>
+                            <select class="form-control" name="holiday_statusOfHoliday" ng-model="holiday.holiday_statusOfHoliday.id" ng-options="statusOfHoliday.id as statusOfHoliday.name for statusOfHoliday in statusofholidays">
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label translate="monApp.holiday.holiday_user">holiday_user</label>
+                            <select class="form-control" name="holiday_user" ng-model="holiday.holiday_user.id" ng-options="user.id as user.lastName for user in users">
+                            </select>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+                            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+                        </button>
+                        <button type="submit" ng-disabled="editForm.$invalid" class="btn btn-primary">
+                            <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="deleteHolidayConfirmation">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form name="deleteForm" ng-submit="confirmDelete(holiday.id)">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                                ng-click="clear()">&times;</button>
+                        <h4 class="modal-title" translate="entity.delete.title">Confirm delete operation</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p translate="monApp.holiday.delete.question" translate-values="{id: '{{holiday.id}}'}">Are you sure you want to delete this Holiday?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+                            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+                        </button>
+                        <button type="submit" ng-disabled="deleteForm.$invalid" class="btn btn-danger">
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th translate="monApp.holiday.fromDate">FromDate</th>
+                    <th translate="monApp.holiday.toDate">ToDate</th>
+                    <th translate="monApp.holiday.requestDate">RequestDate</th>
+                    <th translate="monApp.holiday.comment">Comment</th>
+                    <th translate="monApp.holiday.holiday_kindOfHoliday">holiday_kindOfHoliday</th>
+                    <th translate="monApp.holiday.holiday_statusOfHoliday">holiday_statusOfHoliday</th>
+                    <th translate="monApp.holiday.holiday_user">holiday_user</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="holiday in holidays">
+                    <td><a ui-sref="holidayDetail({id:holiday.id})">{{holiday.id}}</a></td>
+                    <td>{{holiday.fromDate}}</td>
+                    <td>{{holiday.toDate}}</td>
+                    <td>{{holiday.requestDate}}</td>
+                    <td>{{holiday.comment}}</td>
+                    <td>{{holiday.holiday_kindOfHoliday.name}}</td>
+                    <td>{{holiday.holiday_statusOfHoliday.name}}</td>
+                    <td>{{holiday.holiday_user.lastName}}</td>
+                    <td>
+                        <button type="submit"
+                                ui-sref="holidayDetail({id:holiday.id})"
+                                class="btn btn-info">
+                            <span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span translate="entity.action.view"> View</span>
+                        </button>
+                        <button type="submit"
+                                ng-click="update(holiday.id)"
+                                class="btn btn-primary">
+                            <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span translate="entity.action.edit"> Edit</span>
+                        </button>
+                        <button type="submit"
+                                ng-click="delete(holiday.id)"
+                                class="btn btn-danger">
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete"> Delete</span>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <nav>
+            <ul class="pager">
+                <li ng-show="links['first']" ng-click="loadPage(links['first'])"><a href="#">&lt;&lt;</a></li>
+                <li ng-show="links['prev']" ng-click="loadPage(links['prev'])"><a href="#">&lt;</a></li>
+                <li ng-show="links['next']" ng-click="loadPage(links['next'])"><a href="#">&gt;</a></li>
+                <li ng-show="links['last']" ng-click="loadPage(links['last'])"><a href="#">&gt;&gt;</a></li>
+            </ul>
+        </nav>
+    </div>
+</div>
+
+
