@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+   <changeSet author="kalipiec (generated)" id="1429038882257-1">
+      <createTable tableName="T_EVENT">
+         <column autoIncrement="true" name="id" type="BIGINT">
+            <constraints primaryKey="true" primaryKeyName="T_EVENTPK"/>
+         </column>
+         <column name="end_at" type="timestamp"/>
+         <column name="start_at" type="timestamp">
+            <constraints nullable="false"/>
+         </column>
+         <column name="user_id" type="BIGINT"/>
+      </createTable>
+   </changeSet>
+   <changeSet author="kalipiec (generated)" id="1429038882257-2">
+      <addForeignKeyConstraint baseColumnNames="user_id"
+                               baseTableName="T_EVENT"
+                               constraintName="FK_jsb3p228pg5h7vnyoku2bn4xf"
+                               deferrable="false"
+                               initiallyDeferred="false"
+                               referencedColumnNames="id"
+                               referencedTableName="T_USER"/>
+   </changeSet>
+</databaseChangeLog>

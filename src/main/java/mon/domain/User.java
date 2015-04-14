@@ -70,7 +70,7 @@ public class User extends AbstractAuditingEntity implements Serializable {
     private Employee employee;
 
     @JsonIgnore
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
         name = "T_USER_AUTHORITY",
         joinColumns = {@JoinColumn(name = "user_id", referencedColumnName = "id")},
@@ -78,7 +78,7 @@ public class User extends AbstractAuditingEntity implements Serializable {
     private Set<Authority> authorities = new HashSet<>();
 
     @JsonIgnore
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "user")
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "user", fetch = FetchType.EAGER)
     private Set<PersistentToken> persistentTokens = new HashSet<>();
 
 }

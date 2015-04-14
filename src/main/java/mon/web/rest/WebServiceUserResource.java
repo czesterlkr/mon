@@ -5,6 +5,9 @@ import com.google.common.collect.Lists;
 import mon.domain.User;
 import mon.repository.UserRepository;
 import mon.security.AuthoritiesConstants;
+import mon.service.UserEventService;
+import mon.service.enums.EntranceStatus;
+import mon.service.enums.ExitStatus;
 import mon.web.rest.dto.SimpleUserDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -32,6 +35,9 @@ public class WebServiceUserResource {
 
     @Inject
     private UserRepository userRepository;
+
+    @Inject
+    private UserEventService userEventService;
 
     /**
      * GET  /users -> get all users without face activation.
@@ -79,13 +85,14 @@ public class WebServiceUserResource {
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     @RolesAllowed(AuthoritiesConstants.ADMIN)
-    public ResponseEntity<String> entranceUser(@PathVariable String login, HttpServletResponse response) {
+    public ResponseEntity<User> entranceUser(@PathVariable String login, HttpServletResponse response) {
         log.debug("REST request to User Entrance: {}", login);
         User user = userRepository.findOneByLogin(login);
         if (user == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-        return new ResponseEntity<String>(user.getLogin(), HttpStatus.OK);
+        EntranceStatus entranceStatus = userEventService.entrance(user);
+        return new ResponseEntity<User>(user, entranceStatus.getStatus());
     }
 
     /**
@@ -96,12 +103,13 @@ public class WebServiceUserResource {
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     @RolesAllowed(AuthoritiesConstants.ADMIN)
-    public ResponseEntity<String> exitUser(@PathVariable String login, HttpServletResponse response) {
+    public ResponseEntity<User> exitUser(@PathVariable String login, HttpServletResponse response) {
         log.debug("REST request to User Exit: {}", login);
         User user = userRepository.findOneByLogin(login);
         if (user == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-        return new ResponseEntity<String>(user.getLogin(), HttpStatus.OK);
+        ExitStatus exitStatus = userEventService.exit(user);
+        return new ResponseEntity<User>(user, exitStatus.getStatus());
     }
 }
