@@ -6,11 +6,8 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 import mon.domain.util.CustomDateTimeDeserializer;
-import mon.domain.util.CustomDateTimeSerializer;
-import mon.domain.util.CustomLocalDateSerializer;
-import mon.domain.util.ISO8601LocalDateDeserializer;
+import mon.domain.util.CustomLocalDateTimeSerializer;
 import org.hibernate.annotations.Type;
-import org.joda.time.LocalDate;
 import org.joda.time.LocalDateTime;
 
 import javax.persistence.*;
@@ -33,13 +30,13 @@ public class Event implements Serializable {
 
     @NotNull
     @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDateTime")
-    @JsonSerialize(using = CustomDateTimeSerializer.class)
+    @JsonSerialize(using = CustomLocalDateTimeSerializer.class)
     @JsonDeserialize(using = CustomDateTimeDeserializer.class)
     @Column(name = "start_at", nullable = false)
     private LocalDateTime startAt;
 
     @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDateTime")
-    @JsonSerialize(using = CustomDateTimeSerializer.class)
+    @JsonSerialize(using = CustomLocalDateTimeSerializer.class)
     @JsonDeserialize(using = CustomDateTimeDeserializer.class)
     @Column(name = "end_at", nullable = true)
     private LocalDateTime endAt;
