@@ -1,0 +1,234 @@
+<div>
+    <!--<div class="row">-->
+        <!--<div class="col-md-8 col-md-offset-2">-->
+            <!--<h2 translate="settings.title" translate-values="{username: '{{settingsAccount.login}}'}">User settings for [<b>{{settingsAccount.login}}</b>]</h2>-->
+
+            <!--<div class="alert alert-success" ng-show="success" translate="settings.messages.success">-->
+                <!--<strong>Settings saved!</strong>-->
+            <!--</div>-->
+
+            <!--<div class="alert alert-danger" ng-show="errorEmailExists" translate="settings.messages.error.emailexists">-->
+                <!--<strong>E-mail is already in use!</strong> Please choose another one.-->
+            <!--</div>-->
+
+            <!--<div class="alert alert-danger" ng-show="error" translate="settings.messages.error.fail">-->
+                <!--<strong>An error has occurred!</strong> Settings could not be saved.-->
+            <!--</div>-->
+
+            <!--<form name="form" role="form" novalidate ng-submit="save()" show-validation>-->
+
+                <!--<div class="form-group">-->
+                    <!--<label translate="settings.form.firstname">First Name</label>-->
+                    <!--<input type="text" class="form-control" name="firstName" placeholder="{{'settings.form.firstname.placeholder' | translate}}"-->
+                           <!--ng-model="settingsAccount.firstName" ng-minlength=1 ng-maxlength=50 required maxlength="50">-->
+                    <!--<div ng-show="form.firstName.$dirty && form.firstName.$invalid">-->
+                        <!--<p class="help-block"-->
+                               <!--ng-show="form.firstName.$error.required" translate="settings.messages.validate.firstname.required">-->
+                            <!--Your first name is required.-->
+                        <!--</p>-->
+                        <!--<p class="help-block"-->
+                               <!--ng-show="form.firstName.$error.minlength" translate="settings.messages.validate.firstname.minlength">-->
+                            <!--Your first name is required to be at least 1 character-->
+                        <!--</p>-->
+                        <!--<p class="help-block"-->
+                               <!--ng-show="form.firstName.$error.maxlength" translate="settings.messages.validate.firstname.maxlength">-->
+                            <!--Your first name cannot be longer than 50 characters-->
+                        <!--</p>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="form-group">-->
+                    <!--<label translate="settings.form.lastname">Last Name</label>-->
+                    <!--<input type="text" class="form-control" name="lastName" placeholder="{{'settings.form.lastname.placeholder' | translate}}"-->
+                           <!--ng-model="settingsAccount.lastName" ng-minlength=1 ng-maxlength=50 required maxlength="50">-->
+                    <!--<div ng-show="form.lastName.$dirty && form.lastName.$invalid">-->
+                        <!--<p class="help-block"-->
+                               <!--ng-show="form.lastName.$error.required" translate="settings.messages.validate.lastname.required">-->
+                            <!--Your last name is required.-->
+                        <!--</p>-->
+                        <!--<p class="help-block"-->
+                               <!--ng-show="form.lastName.$error.minlength" translate="settings.messages.validate.lastname.minlength">-->
+                            <!--Your last name is required to be at least 1 character-->
+                        <!--</p>-->
+                        <!--<p class="help-block"-->
+                               <!--ng-show="form.lastName.$error.maxlength" translate="settings.messages.validate.lastname.maxlength">-->
+                            <!--Your last name cannot be longer than 50 characters-->
+                        <!--</p>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="form-group">-->
+                    <!--<label translate="global.form.email">E-mail</label>-->
+                    <!--<input type="email" class="form-control" name="email" placeholder="{{'global.form.email.placeholder' | translate}}"-->
+                           <!--ng-model="settingsAccount.email" ng-minlength=5 ng-maxlength=100 required maxlength="100">-->
+                    <!--<div ng-show="form.email.$dirty && form.email.$invalid">-->
+                        <!--<p class="help-block"-->
+                               <!--ng-show="form.email.$error.required" translate="global.messages.validate.email.required">-->
+                            <!--Your e-mail is required.-->
+                        <!--</p>-->
+                        <!--<p class="help-block"-->
+                               <!--ng-show="form.email.$error.email" translate="global.messages.validate.email.invalid">-->
+                            <!--Your e-mail is invalid.-->
+                        <!--</p>-->
+                        <!--<p class="help-block"-->
+                               <!--ng-show="form.email.$error.minlength" translate="global.messages.validate.email.minlength">-->
+                            <!--Your e-mail is required to be at least 5 characters-->
+                        <!--</p>-->
+                        <!--<p class="help-block"-->
+                               <!--ng-show="form.email.$error.maxlength" translate="global.messages.validate.email.maxlength">-->
+                            <!--Your e-mail cannot be longer than 100 characters-->
+                        <!--</p>-->
+                    <!--</div>-->
+                <!--</div>-->
+
+                <!--<button type="submit" ng-disabled="form.$invalid" class="btn btn-primary" translate="settings.form.button">Save</button>-->
+            <!--</form>-->
+        <!--</div>-->
+    <!--</div>-->
+
+
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th translate="settings.form.firstname">First Name</th>
+                <th translate="settings.form.lastname">Last Name</th>
+                <th translate="global.form.email">E-mail</th>
+                <th translate="settings.form.salary">Salary</th>
+                <th translate="settings.form.project">Project</th>
+                <!--<th translate="monApp.holiday.comment">Comment</th>-->
+                <!--<th translate="monApp.holiday.holiday_kindOfHoliday">holiday_kindOfHoliday</th>-->
+                <!--<th translate="monApp.holiday.holiday_statusOfHoliday">holiday_statusOfHoliday</th>-->
+                <!--<th translate="monApp.holiday.holiday_user">holiday_user</th>-->
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="user in users">
+                <td><a ui-sref="holidayDetail({id:user.id})">{{user.id}}</a></td>
+                <td>{{user.firstName}}</td>
+                <td>{{user.lastName}}</td>
+                <td>{{user.email}}</td>
+                <td>{{user.employee.salary}}</td>
+                <td>{{user.employee.project.name}}</td>
+                <!--<td>{{holiday.comment}}</td>-->
+                <!--<td>{{holiday.holiday_kindOfHoliday.name}}</td>-->
+                <!--<td>{{holiday.holiday_statusOfHoliday.name}}</td>-->
+                <!--<td>{{holiday.user.lastName}} {{holiday.user.firstName}}</td>-->
+                <td>
+                    <!--<button type="submit"-->
+                    <!--ui-sref="holidayDetail({id:holiday.id})"-->
+                    <!--class="btn btn-info">-->
+                    <!--<span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span translate="entity.action.view"> View</span>-->
+                    <!--</button>-->
+                    <button type="submit"
+                            ng-click="update(user.login)"
+                            class="btn btn-primary">
+                        <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span translate="entity.action.edit"> Edit</span>
+                    </button>
+                    <!--<button type="submit"-->
+                            <!--ng-click="delete(holiday.id)"-->
+                            <!--class="btn btn-danger">-->
+                        <!--<span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete"> Delete</span>-->
+                    <!--</button>-->
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <!--<nav>-->
+            <!--<ul class="pager">-->
+                <!--<li ng-show="links['first']" ng-click="loadPage(links['first'])"><a href="#">&lt;&lt;</a></li>-->
+                <!--<li ng-show="links['prev']" ng-click="loadPage(links['prev'])"><a href="#">&lt;</a></li>-->
+                <!--<li ng-show="links['next']" ng-click="loadPage(links['next'])"><a href="#">&gt;</a></li>-->
+                <!--<li ng-show="links['last']" ng-click="loadPage(links['last'])"><a href="#">&gt;&gt;</a></li>-->
+            <!--</ul>-->
+        <!--</nav>-->
+    </div>
+
+    <div class="modal fade" id="saveUserModal" tabindex="-1" role="dialog" aria-labelledby="myHolidayLabel"
+         aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form name="editForm" role="form" novalidate ng-submit="create()" show-validation>
+
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                                ng-click="clear()">&times;</button>
+                        <h4 class="modal-title" id="myHolidayLabel" translate="monApp.holiday.home.createOrEditLabel">Create or edit a Holiday</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group" >
+                            <label>ID</label>
+                            <input type="text" class="form-control" name="id"
+                                   ng-model="user.id" readonly>
+                        </div>
+
+                        <div class="form-group">
+                            <label translate="settings.form.firstname">first name</label>
+                            <input type="text" class="form-control" name="firstname"
+                                   ng-model="user.firstName" required>
+
+                            <!--<div ng-show="editForm.fromDate.$invalid">-->
+                                <!--<p class="help-block"-->
+                                   <!--ng-show="editForm.fromDate.$error.required" translate="entity.validation.required">-->
+                                    <!--This field is required.-->
+                                <!--</p>-->
+                            <!--</div>-->
+                        </div>
+                        <div class="form-group">
+                            <label translate="settings.form.lastname">lastname</label>
+                            <input type="text" class="form-control" name="lastName"
+                                   ng-model="user.lastName" required>
+
+                            <!--<div ng-show="editForm.toDate.$invalid">-->
+                                <!--<p class="help-block"-->
+                                   <!--ng-show="editForm.toDate.$error.required" translate="entity.validation.required">-->
+                                    <!--This field is required.-->
+                                <!--</p>-->
+                            <!--</div>-->
+                        </div>
+                        <!--<div class="form-group">-->
+                        <!--<label translate="monApp.holiday.requestDate">RequestDate</label>-->
+                        <!--<input type="date" class="form-control" name="requestDate"-->
+                        <!--ng-model="holiday.requestDate" ng-init="holiday.requestDate = Date; alert(Date)">-->
+
+                        <!--</div>-->
+                        <div class="form-group">
+                        <label translate="settings.form.salary">Salary</label>
+                        <input type="text" class="form-control" name="salary"
+                        ng-model="user.employee.salary">
+                        </div>
+
+                        <div class="form-group">
+                            <label translate="settings.form.project">project_title</label>
+                            <select class="form-control" name="project" ng-model="user.employee.project.id" ng-options="project.id as project.name for project in projects">
+                            </select>
+                        </div>
+
+                        <!--<div class="form-group">-->
+                        <!--<label translate="monApp.holiday.holiday_statusOfHoliday">holiday_statusOfHoliday</label>-->
+                        <!--<select class="form-control" name="holiday_statusOfHoliday" ng-model="holiday.holiday_statusOfHoliday.id"-->
+                        <!--ng-options="statusOfHoliday.id as statusOfHoliday.name for statusOfHoliday in statusofholidays"-->
+                        <!--ng-init="holiday.holiday_statusOfHoliday.id=statusofholidays[0]">-->
+                        <!--</select>-->
+                        <!--</div>-->
+                        <!--<div class="form-group">-->
+                        <!--<label translate="monApp.holiday.holiday_user">holiday_user</label>-->
+                        <!--<select class="form-control" name="holiday_user" ng-model="holiday.user.id" ng-options="user.id as user.lastName for user in users">-->
+                        <!--</select>-->
+                        <!--</div>-->
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+                            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+                        </button>
+                        <button type="button" ng-disabled="editForm.$invalid" class="btn btn-primary" ng-click="create(user.login)">
+                            <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>

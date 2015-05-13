@@ -1,14 +1,14 @@
 'use strict';
 
 angular.module('monApp')
-    .controller('HolidayController', function ($scope, Holiday, KindOfHoliday, StatusOfHoliday, User, ParseLinks) {
+    .controller('HolidayAdminController', function ($scope, HolidayAdmin, KindOfHoliday, StatusOfHoliday, User, ParseLinks) {
         $scope.holidays = [];
         $scope.kindofholidays = KindOfHoliday.query();
         $scope.statusofholidays = StatusOfHoliday.query();
         $scope.users = User.query();
         $scope.page = 1;
         $scope.loadAll = function() {
-            Holiday.getHolidayForCurrentUser({page: $scope.page, per_page: 20}, function(result, headers) {
+            HolidayAdmin.query({page: $scope.page, per_page: 20}, function(result, headers) {
                 $scope.links = ParseLinks.parse(headers('link'));
                 $scope.holidays = result;
             });
@@ -19,10 +19,8 @@ angular.module('monApp')
         };
         $scope.loadAll();
 
-        $scope.Date = new Date();
-
         $scope.create = function () {
-            Holiday.update($scope.holiday,
+            HolidayAdmin.update($scope.holiday,
                 function () {
                     $scope.loadAll();
                     $('#saveHolidayModal').modal('hide');
@@ -31,21 +29,21 @@ angular.module('monApp')
         };
 
         $scope.update = function (id) {
-            Holiday.get({id: id}, function(result) {
+            HolidayAdmin.get({id: id}, function(result) {
                 $scope.holiday = result;
                 $('#saveHolidayModal').modal('show');
             });
         };
 
         $scope.delete = function (id) {
-            Holiday.get({id: id}, function(result) {
+            HolidayAdmin.get({id: id}, function(result) {
                 $scope.holiday = result;
                 $('#deleteHolidayConfirmation').modal('show');
             });
         };
 
         $scope.confirmDelete = function (id) {
-            Holiday.delete({id: id},
+            HolidayAdmin.delete({id: id},
                 function () {
                     $scope.loadAll();
                     $('#deleteHolidayConfirmation').modal('hide');

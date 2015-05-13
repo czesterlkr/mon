@@ -4,8 +4,8 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
 
-    <!--<include file="classpath:config/liquibase/changelog/00000000000000_initial_schema.xml" relativeToChangelogFile="false"/>-->
-    <!--<include file="classpath:config/liquibase/changelog/20150320090536_added_entity_Project.xml" relativeToChangelogFile="false"/>-->
+    <include file="classpath:config/liquibase/changelog/00000000000000_initial_schema.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20150320090536_added_entity_Project.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20150326210850_changelog.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20150407114310_added_entity_KindOfHoliday.xml"
              relativeToChangelogFile="false"/>
@@ -15,5 +15,6 @@
              relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20150414211429_changelog.xml"
              relativeToChangelogFile="false"/>
-    <!-- JHipster will add liquibase changelogs here -->
+
+
 </databaseChangeLog>

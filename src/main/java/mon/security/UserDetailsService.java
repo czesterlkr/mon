@@ -47,4 +47,6 @@ public class UserDetailsService implements org.springframework.security.core.use
         return new org.springframework.security.core.userdetails.User(lowercaseLogin,
             userFromDatabase.getPassword(), grantedAuthorities);
     }
+
+
 }

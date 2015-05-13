@@ -15,6 +15,7 @@
             "account": {
                 "main": "Account",
                 "settings": "Settings",
+                "settingsAdmin": "Employees",
                 "password": "Password",
                 "sessions": "Sessions",
                 "login": "Authenticate",

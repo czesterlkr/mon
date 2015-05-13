@@ -2,6 +2,7 @@ package mon.service;
 
 import mon.domain.Authority;
 import mon.domain.PersistentToken;
+import mon.domain.Project;
 import mon.domain.User;
 import mon.repository.AuthorityRepository;
 import mon.repository.PersistentTokenRepository;
@@ -18,6 +19,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.inject.Inject;
+import java.math.BigDecimal;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -75,6 +77,7 @@ public class UserService {
         newUser.setActivationKey(RandomUtil.generateActivationKey());
         authorities.add(authority);
         newUser.setAuthorities(authorities);
+        newUser.createEmployee();
         userRepository.save(newUser);
         log.debug("Created Information for User: {}", newUser);
         return newUser;
@@ -87,6 +90,17 @@ public class UserService {
         currentUser.setEmail(email);
         userRepository.save(currentUser);
         log.debug("Changed Information for User: {}", currentUser);
+    }
+
+    public void updateSignleUser(String firstName, String lastName, String email, BigDecimal salary, User userToUpdate, Project project) {
+        //User currentUser = userRepository.findOneByLogin(SecurityUtils.getCurrentLogin());
+        userToUpdate.setFirstName(firstName);
+        userToUpdate.setLastName(lastName);
+        userToUpdate.setEmail(email);
+        userToUpdate.getEmployee().setSalary(salary);
+        userToUpdate.getEmployee().setProject(project);
+        userRepository.save(userToUpdate);
+        log.debug("Changed Information for User: {}", userToUpdate);
     }
 
     public void changePassword(String password) {

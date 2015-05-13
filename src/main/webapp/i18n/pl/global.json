@@ -15,6 +15,7 @@
             "account": {
                 "main": "Konto",
                 "settings": "Ustawienia",
+                "settingsAdmin": "Pracownicy",
                 "password": "Hasło",
                 "sessions": "Sesje",
                 "login": "Zaloguj się",

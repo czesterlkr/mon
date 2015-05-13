@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('monApp')
-    .factory('Holiday', function ($resource) {
+    .factory('HolidayAdmin', function ($resource) {
         return $resource('api/holidays/:id', {}, {
             'query': { method: 'GET', isArray: true},
             'get': {
@@ -17,7 +17,6 @@ angular.module('monApp')
                     return data;
                 }
             },
-            'update': { method:'PUT' },
-            'getHolidayForCurrentUser': {method: 'GET', isArray: true, url: 'api/holidaysForCurrentUser'}
+            'update': { method:'PUT' }
         });
     });

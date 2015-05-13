@@ -3,6 +3,8 @@ package mon.domain;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import lombok.Getter;
+import lombok.Setter;
 import mon.domain.util.CustomLocalDateSerializer;
 import mon.domain.util.ISO8601LocalDateDeserializer;
 import org.hibernate.annotations.Type;
@@ -20,6 +22,8 @@ import java.util.Objects;
  */
 @Entity
 @Table(name = "T_HOLIDAY")
+@Getter
+@Setter
 public class Holiday implements Serializable {
 
     @Id
@@ -56,7 +60,8 @@ public class Holiday implements Serializable {
     private StatusOfHoliday holiday_statusOfHoliday;
 
     @ManyToOne
-    private User holiday_user;
+    @JoinColumn(name="holiday_user_id", nullable=false)
+    private User user;
 
     public Long getId() {
         return id;
@@ -114,14 +119,6 @@ public class Holiday implements Serializable {
         this.holiday_statusOfHoliday = statusOfHoliday;
     }
 
-    public User getHoliday_user() {
-        return holiday_user;
-    }
-
-    public void setHoliday_user(User user) {
-        this.holiday_user = user;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -152,5 +149,10 @@ public class Holiday implements Serializable {
                 ", requestDate='" + requestDate + "'" +
                 ", comment='" + comment + "'" +
                 '}';
+    }
+
+    @PrePersist
+    protected void onCreate() {
+        this.requestDate = new LocalDate();
     }
 }

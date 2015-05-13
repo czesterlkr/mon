@@ -23,6 +23,26 @@ angular.module('monApp')
                     }]
                 }
             })
+            .state('holidayAdmin', {
+                parent: 'entity',
+                url: '/holidayAdmin',
+                data: {
+                    roles: ['ROLE_USER', 'ROLE_ADMIN'],
+                    pageTitle: 'monApp.holiday.home.title'
+                },
+                views: {
+                    'content@': {
+                        templateUrl: 'scripts/app/entities/holiday/holidaysAdmin.html',
+                        controller: 'HolidayAdminController'
+                    }
+                },
+                resolve: {
+                    translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                        $translatePartialLoader.addPart('holiday');
+                        return $translate.refresh();
+                    }]
+                }
+            })
             .state('holidayDetail', {
                 parent: 'entity',
                 url: '/holiday/:id',
