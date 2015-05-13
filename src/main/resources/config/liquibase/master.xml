@@ -15,6 +15,12 @@
              relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20150414211429_changelog.xml"
              relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20150512220542_changelog.xml"
+             relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20150512220542_add_holiday_status_enum.xml"
+             relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20150513170703_changelog.xml"
+             relativeToChangelogFile="false"/>
 
 
 </databaseChangeLog>
