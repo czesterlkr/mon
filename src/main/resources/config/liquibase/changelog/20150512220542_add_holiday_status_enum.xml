@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+    <changeSet id="111111-1" author="Grzegorz">
+        <insert tableName="t_statusofholiday">
+            <column name="id" value="1"/>
+            <column name="name" value ="oczekiwanie"/>
+        </insert>
+        <insert tableName="t_statusofholiday">
+            <column name="id" value="2"/>
+            <column name="name" value ="zaakceptowany"/>
+        </insert>
+        <insert tableName="t_statusofholiday">
+            <column name="id" value="3"/>
+            <column name="name" value ="odrzucony"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>

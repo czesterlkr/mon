@@ -1,21 +1,33 @@
 package mon.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
+import mon.domain.Employee;
+import mon.domain.Holiday;
+import mon.domain.Project;
 import mon.domain.User;
+import mon.repository.ProjectRepository;
 import mon.repository.UserRepository;
 import mon.security.AuthoritiesConstants;
+import mon.security.SecurityUtils;
+import mon.service.UserService;
+import mon.web.rest.dto.UserDTO;
+import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.security.RolesAllowed;
 import javax.inject.Inject;
+import java.io.IOException;
+import java.math.BigDecimal;
+import java.net.URISyntaxException;
 import java.util.List;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
 
 /**
  * REST controller for managing users.
@@ -28,6 +40,12 @@ public class UserResource {
 
     @Inject
     private UserRepository userRepository;
+
+    @Inject
+    private UserService userService;
+
+    @Inject
+    private ProjectRepository projectRepository;
 
     /**
      * GET  /users -> get all users.
@@ -57,4 +75,60 @@ public class UserResource {
         }
         return user;
     }
+
+    /**
+     * PUT  /users -> Updates an existing user by login.
+     */
+    @RequestMapping(value = "/updateUser",
+            method = RequestMethod.POST,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    @Timed
+    @RolesAllowed(AuthoritiesConstants.ADMIN)
+    public ResponseEntity<Void> update(@RequestBody UserDTO userDTO) {
+
+        User userHavingThisLogin = userRepository.findOneByLogin(userDTO.getLogin());
+//        if (userHavingThisLogin != null && !userHavingThisLogin.getLogin().equals(SecurityUtils.getCurrentLogin())) {
+//            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+//        }
+        Project project = null;
+        if (userDTO.getEmployeeDTO().getProject() != null) {
+            project = projectRepository.findOne(userDTO.getEmployeeDTO().getProject().getId());
+        }
+        if (userHavingThisLogin != null) {
+            userService.updateSignleUser(userDTO.getFirstName(), userDTO.getLastName(), userDTO.getEmail(), userDTO.getEmployeeDTO().getSalary(), userHavingThisLogin, project);
+        }
+        return ResponseEntity.ok().build();
+    }
+    /**
+     * PUT  /users -> Updates an existing user by login.
+     *//*
+    @RequestMapping(value = "/updateUser/{login}",
+            method = RequestMethod.PUT,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    @Timed
+    @RolesAllowed(AuthoritiesConstants.ADMIN)
+    public ResponseEntity<Void> update(@PathVariable String login, HttpServletRequest request) {
+
+        User userFromDatabase = userRepository.findOneByLogin(login);
+
+        String fn = request.getParameter("firstName");
+        String ln = request.getParameter("lastName");
+//        String employee1 = (Employee) request.getParameter("employee");
+        BigDecimal salary =  new BigDecimal("0");;
+        *//*if (employee1.getSalary() != null)
+            salary = employee1.getSalary();
+        else
+            salary = new BigDecimal("0");*//*
+
+        userFromDatabase.setFirstName(fn);
+        userFromDatabase.setLastName(ln);
+        Employee e = userFromDatabase.getEmployee();
+//        pe przyjmuje wartosc null
+        e.setSalary(salary);
+
+        log.debug("REST request to update User : {}", userFromDatabase);
+        userRepository.save(userFromDatabase);
+
+        return ResponseEntity.ok().build();
+    }*/
 }

@@ -1,5 +1,7 @@
 package mon.web.rest.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -8,12 +10,24 @@ import org.hibernate.validator.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
+import java.math.BigDecimal;
 import java.util.List;
 
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
 public class UserDTO {
+
+    public UserDTO(String login, String password, String firstName, String lastName, String email, String langKey, List<String> roles) {
+        this.login = login;
+        this.password = password;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.langKey =langKey;
+        this.roles = roles;
+
+    }
 
     @Pattern(regexp = "^[a-z0-9]*$")
     @NotNull
@@ -38,5 +52,9 @@ public class UserDTO {
     private String langKey;
 
     private List<String> roles;
+
+//    @JsonTypeInfo(use=JsonTypeInfo.Id.CLASS, include=JsonTypeInfo.As.PROPERTY, property="@class")
+    @JsonProperty(value = "employee")
+    private EmployeeDTO employeeDTO;
 
 }

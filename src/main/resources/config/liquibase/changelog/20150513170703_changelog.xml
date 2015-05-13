@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+   <changeSet author="Grzegorz (generated)" id="1431529645595-1">
+      <addColumn tableName="T_USER">
+         <column name="project_id" type="int8"/>
+      </addColumn>
+   </changeSet>
+   <!--<changeSet author="Grzegorz (generated)" id="1431529645595-2">-->
+      <!--<addColumn tableName="T_USER">-->
+         <!--<column name="salary" type="numeric(19, 2)"/>-->
+      <!--</addColumn>-->
+   <!--</changeSet>-->
+   <changeSet author="Grzegorz (generated)" id="1431529645595-3">
+      <addForeignKeyConstraint baseColumnNames="project_id"
+                               baseTableName="T_USER"
+                               constraintName="FK_d05tcb0nmv7kcqkyadl1ainbs"
+                               deferrable="false"
+                               initiallyDeferred="false"
+                               referencedColumnNames="id"
+                               referencedTableName="T_PROJECT"/>
+   </changeSet>
+</databaseChangeLog>

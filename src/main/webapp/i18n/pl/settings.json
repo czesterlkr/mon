@@ -6,7 +6,9 @@
             "firstname.placeholder": "Twoje imię",
             "lastname": "Nazwisko",
             "lastname.placeholder": "Twoje nazwisko",
-            "button": "Zapisz"
+            "button": "Zapisz",
+            "salary": "Wynagrodzenie",
+            "project": "Projekt"
         },
         "messages": {
             "error": {

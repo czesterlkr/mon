@@ -81,4 +81,8 @@ public class User extends AbstractAuditingEntity implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "user", fetch = FetchType.EAGER)
     private Set<PersistentToken> persistentTokens = new HashSet<>();
 
+    public void createEmployee(){
+        this.setEmployee(new Employee());
+    }
+
 }

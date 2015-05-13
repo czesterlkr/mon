@@ -1,6 +1,9 @@
 package mon.repository;
 
 import mon.domain.Holiday;
+import mon.domain.User;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.*;
 
 import java.util.List;
@@ -10,7 +13,6 @@ import java.util.List;
  */
 public interface HolidayRepository extends JpaRepository<Holiday,Long> {
 
-    @Query("select holiday from Holiday holiday where holiday.holiday_user.login = ?#{principal.username}")
-    List<Holiday> findAllForCurrentUser();
+    Page<Holiday> findAllByUserLogin(String username, Pageable pageable);
 
 }

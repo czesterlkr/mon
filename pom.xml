@@ -529,8 +529,8 @@
                     <driver>org.postgresql.Driver</driver>
                     <url>jdbc:postgresql://localhost/mon</url>
                     <defaultSchemaName/>
-                    <username>mop</username>
-                    <password>mop</password>
+                    <username>postgres</username>
+                    <password>postgres</password>
                     <referenceUrl>hibernate:spring:mon.domain?dialect=org.hibernate.dialect.PostgreSQL82Dialect
                     </referenceUrl>
                     <verbose>true</verbose>

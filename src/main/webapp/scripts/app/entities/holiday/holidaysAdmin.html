@@ -1,10 +1,10 @@
 <div>
-    user
+    admin
     <h2 translate="monApp.holiday.home.title">Holiday</h2>
 
-    <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#saveHolidayModal" ng-click="clear()">
-        <span class="glyphicon glyphicon-flash"></span> <span translate="monApp.holiday.home.createLabel">Create a new Holiday</span>
-    </button>
+    <!--<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#saveHolidayModal" ng-click="clear()">-->
+        <!--<span class="glyphicon glyphicon-flash"></span> <span translate="monApp.holiday.home.createLabel">Create a new Holiday</span>-->
+    <!--</button>-->
     <div class="modal fade" id="saveHolidayModal" tabindex="-1" role="dialog" aria-labelledby="myHolidayLabel"
          aria-hidden="true">
         <div class="modal-dialog">
@@ -26,7 +26,7 @@
                         <div class="form-group">
                             <label translate="monApp.holiday.fromDate">FromDate</label>
                             <input type="date" class="form-control" name="fromDate"
-                                   ng-model="holiday.fromDate" required>
+                                   ng-model="holiday.fromDate" required readonly>
 
                             <div ng-show="editForm.fromDate.$invalid">
                                 <p class="help-block"
@@ -38,7 +38,7 @@
                         <div class="form-group">
                             <label translate="monApp.holiday.toDate">ToDate</label>
                             <input type="date" class="form-control" name="toDate"
-                                   ng-model="holiday.toDate" required>
+                                   ng-model="holiday.toDate" required readonly>
 
                             <div ng-show="editForm.toDate.$invalid">
                                 <p class="help-block"
@@ -47,36 +47,34 @@
                                 </p>
                             </div>
                         </div>
-                        <!--<div class="form-group">-->
-                            <!--<label translate="monApp.holiday.requestDate">RequestDate</label>-->
-                            <!--<input type="date" class="form-control" name="requestDate"-->
-                                   <!--ng-model="holiday.requestDate" ng-init="holiday.requestDate = Date; alert(Date)">-->
+                        <div class="form-group">
+                            <label translate="monApp.holiday.requestDate">RequestDate</label>
+                            <input type="date" class="form-control" name="requestDate"
+                                   ng-model="holiday.requestDate" readonly>
 
-                        <!--</div>-->
-                        <!--<div class="form-group">-->
-                            <!--<label translate="monApp.holiday.comment">Comment</label>-->
-                            <!--<input type="text" class="form-control" name="comment"-->
-                                   <!--ng-model="holiday.comment" readonly>-->
+                        </div>
+                        <div class="form-group">
+                            <label translate="monApp.holiday.comment">Comment</label>
+                            <input type="text" class="form-control" name="comment"
+                                   ng-model="holiday.comment">
 
-                        <!--</div>-->
+                        </div>
 
                         <div class="form-group">
                             <label translate="monApp.holiday.holiday_kindOfHoliday">holiday_kindOfHoliday</label>
-                            <select class="form-control" name="holiday_kindOfHoliday" ng-model="holiday.holiday_kindOfHoliday.id" ng-options="kindOfHoliday.id as kindOfHoliday.name for kindOfHoliday in kindofholidays">
+                            <select class="form-control" name="holiday_kindOfHoliday" ng-model="holiday.holiday_kindOfHoliday.id" ng-options="kindOfHoliday.id as kindOfHoliday.name for kindOfHoliday in kindofholidays" readonly ng-disabled="true">
                             </select>
                         </div>
-                        <!--<div class="form-group">-->
-                            <!--<label translate="monApp.holiday.holiday_statusOfHoliday">holiday_statusOfHoliday</label>-->
-                            <!--<select class="form-control" name="holiday_statusOfHoliday" ng-model="holiday.holiday_statusOfHoliday.id"-->
-                                    <!--ng-options="statusOfHoliday.id as statusOfHoliday.name for statusOfHoliday in statusofholidays"-->
-                                    <!--ng-init="holiday.holiday_statusOfHoliday.id=statusofholidays[0]">-->
-                            <!--</select>-->
-                        <!--</div>-->
-                        <!--<div class="form-group">-->
-                            <!--<label translate="monApp.holiday.holiday_user">holiday_user</label>-->
-                            <!--<select class="form-control" name="holiday_user" ng-model="holiday.user.id" ng-options="user.id as user.lastName for user in users">-->
-                            <!--</select>-->
-                        <!--</div>-->
+                        <div class="form-group">
+                            <label translate="monApp.holiday.holiday_statusOfHoliday">holiday_statusOfHoliday</label>
+                            <select class="form-control" name="holiday_statusOfHoliday" ng-model="holiday.holiday_statusOfHoliday.id" ng-options="statusOfHoliday.id as statusOfHoliday.name for statusOfHoliday in statusofholidays">
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label translate="monApp.holiday.holiday_user">holiday_user</label>
+                            <select class="form-control" name="holiday_user" ng-model="holiday.user.id" ng-options="user.id as user.lastName for user in users" readonly ng-disabled="true">
+                            </select>
+                        </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
@@ -152,11 +150,11 @@
                                 class="btn btn-primary">
                             <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span translate="entity.action.edit"> Edit</span>
                         </button>
-                        <button type="submit"
-                                ng-click="delete(holiday.id)"
-                                class="btn btn-danger">
-                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete"> Delete</span>
-                        </button>
+                        <!--<button type="submit"-->
+                                <!--ng-click="delete(holiday.id)"-->
+                                <!--class="btn btn-danger">-->
+                            <!--<span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete"> Delete</span>-->
+                        <!--</button>-->
                     </td>
                 </tr>
             </tbody>

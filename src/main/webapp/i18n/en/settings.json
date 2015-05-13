@@ -6,7 +6,9 @@
             "firstname.placeholder": "Your first name",
             "lastname": "Last Name",
             "lastname.placeholder": "Your last name",
-            "button": "Save"
+            "button": "Save",
+            "salary": "Salary",
+            "project": "Project"
         },
         "messages": {
             "error": {
