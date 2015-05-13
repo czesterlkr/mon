@@ -20,7 +20,11 @@ public class Employee {
     @Column(name = "face")
     private boolean face = false;
 
+    @Column(name = "salary")
+    private BigDecimal salary;
 
+    @ManyToOne
+    private Project project;
 
 
 }
