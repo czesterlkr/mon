@@ -1,8 +1,10 @@
 package mon.service;
 
+import com.google.common.collect.Lists;
 import mon.domain.Event;
 import mon.domain.User;
 import mon.repository.EventRepository;
+import mon.repository.UserRepository;
 import mon.service.enums.EntranceStatus;
 import mon.service.enums.ExitStatus;
 import org.slf4j.Logger;
@@ -25,7 +27,39 @@ public class UserEventService {
     @Inject
     private EventRepository eventRepository;
 
+    @Inject
+    private UserRepository userRepository;
+
+    public List<User> getActivatedUsersAndNotIn() {
+        List<User> users = userRepository.findAllByEmployeeFace(true);
+        List<User> usersNotIn = Lists.newArrayList();
+
+        for (User user : users) {
+            List<Event> events = eventRepository.findByUserAndEndAtIsNull(user);
+            if (events.isEmpty()) {
+                usersNotIn.add(user);
+            }
+        }
+
+        return usersNotIn;
+    }
+
+    public List<User> getActivatedUsersAndIn() {
+        List<User> users = userRepository.findAllByEmployeeFace(true);
+        List<User> usersNotIn = Lists.newArrayList();
+
+        for (User user : users) {
+            List<Event> events = eventRepository.findByUserAndEndAtIsNull(user);
+            if (!events.isEmpty()) {
+                usersNotIn.add(user);
+            }
+        }
+
+        return usersNotIn;
+    }
+
     public EntranceStatus entrance(User user) {
+        user.getEmployee().setFace(true);
         List<Event> events = eventRepository.findByUserAndEndAtIsNull(user);
 
         if (!events.isEmpty()) {
@@ -35,6 +69,7 @@ public class UserEventService {
         Event event = Event.fromNow();
         event.setUser(user);
         eventRepository.save(event);
+        userRepository.save(user);
 
         return EntranceStatus.OK;
     }

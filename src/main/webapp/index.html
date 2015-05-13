@@ -17,6 +17,7 @@
         <!-- endbuild -->
         <!-- build:css assets/styles/main.css -->
         <link rel="stylesheet" href="assets/styles/main.css">
+        <link rel="stylesheet" href="bower_components/fullcalendar/fullcalendar.css"/>
         <!-- endbuild -->
     </head>
     <body ng-app="monApp">
@@ -61,6 +62,11 @@
         <script src="bower_components/angular-local-storage/dist/angular-local-storage.js"></script>
         <script src="bower_components/angular-cache-buster/angular-cache-buster.js"></script>
         <script src="bower_components/ngInfiniteScroll/build/ng-infinite-scroll.js"></script>
+        <script type="text/javascript" src="bower_components/jquery-ui/ui/jquery-ui.js"></script>
+        <script type="text/javascript" src="bower_components/angular/angular.js"></script>
+        <script type="text/javascript" src="bower_components/angular-ui-calendar/src/calendar.js"></script>
+        <script type="text/javascript" src="bower_components/fullcalendar/fullcalendar.js"></script>
+        <script type="text/javascript" src="bower_components/fullcalendar/gcal.js"></script>
         <!-- endbower -->
         <!-- endbuild -->
 
@@ -143,6 +149,10 @@
 
         <script src="scripts/app/account/settingsAdmin/settingsAdmin.js"></script>
         <script src="scripts/app/account/settingsAdmin/settingsAdmin.controller.js"></script>
+
+        <script src="scripts/app/entities/event/event.js"></script>
+        <script src="scripts/app/entities/event/event.controller.js"></script>
+        <script src="scripts/components/entities/event/event.service.js"></script>
         <!-- endbuild -->
 </body>
 </html>

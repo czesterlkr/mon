@@ -17,6 +17,9 @@ import javax.validation.constraints.Size;
 @NoArgsConstructor
 public class SimpleUserDTO {
 
+    @NotNull
+    public Long id;
+
     @Pattern(regexp = "^[a-z0-9]*$")
     @NotNull
     @Size(min = 1, max = 50)
@@ -30,6 +33,6 @@ public class SimpleUserDTO {
     public String lastName;
 
     public static SimpleUserDTO fromUser(User user) {
-        return new SimpleUserDTO(user.getLogin(), user.getFirstName(), user.getLastName());
+        return new SimpleUserDTO(user.getId(), user.getLogin(), user.getFirstName(), user.getLastName());
     }
 }
