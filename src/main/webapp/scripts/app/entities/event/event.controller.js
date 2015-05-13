@@ -10,7 +10,7 @@ angular.module('monApp')
         $scope.uiConfig = {
             calendar: {
                 height: 450,
-                editable: true,
+                editable: false,
                 header: {
                     left: 'title',
                     center: '',
