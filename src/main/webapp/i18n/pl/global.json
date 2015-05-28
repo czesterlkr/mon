@@ -43,7 +43,9 @@
             "confirmpassword": "Potwierdź nowe hasło",
             "confirmpassword.placeholder": "Potwierdź nowe hasło",
             "email": "E-mail",
-            "email.placeholder": "e-mail"
+            "email.placeholder": "e-mail",
+            "firstName": "Imię",
+            "lastName": "Nazwisko"
         },
         "messages": {
             "info": {
@@ -70,6 +72,16 @@
                     "invalid": "Twój e-mail jest błędny.",
                     "minlength": "Twój e-mail musi mieć przynajmniej 5 liter",
                     "maxlength": "Your e-mail nie może być dłuższe niż 50 liter"
+                },
+                "firstName": {
+                    "required": "To pole jest wymagane.",
+                    "minlength": "To pole musi mieć przynajmniej 2 liter",
+                    "maxlength": "To pole nie może być dłuższe niż 50 liter"
+                },
+                "lastName": {
+                    "required": "To pole jest wymagane.",
+                    "minlength": "To pole musi mieć przynajmniej 2 liter",
+                    "maxlength": "To pole nie może być dłuższe niż 50 liter"
                 }
             }
         }

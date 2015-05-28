@@ -3,6 +3,7 @@ package mon.web.rest.dto;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 import mon.domain.User;
 
 import javax.validation.constraints.NotNull;
@@ -14,6 +15,7 @@ import javax.validation.constraints.Size;
  */
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString
 @Getter
 public class SimpleUserDTO {
 
@@ -36,4 +38,3 @@ public class SimpleUserDTO {
         return new SimpleUserDTO(user.getId(), user.getLogin(), user.getFirstName(), user.getLastName());
     }
 }
-
