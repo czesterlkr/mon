@@ -12,27 +12,28 @@ import javax.validation.constraints.Size;
 /**
  * Created by kalipiec on 2015-03-26.
  */
-@Getter
 @AllArgsConstructor
 @NoArgsConstructor
+@Getter
 public class SimpleUserDTO {
 
     @NotNull
-    public Long id;
+    private Long id;
 
     @Pattern(regexp = "^[a-z0-9]*$")
     @NotNull
     @Size(min = 1, max = 50)
-    public String login;
+    private String login;
 
 
     @Size(max = 50)
-    public String firstName;
+    private String firstName;
 
     @Size(max = 50)
-    public String lastName;
+    private String lastName;
 
     public static SimpleUserDTO fromUser(User user) {
         return new SimpleUserDTO(user.getId(), user.getLogin(), user.getFirstName(), user.getLastName());
     }
 }
+
