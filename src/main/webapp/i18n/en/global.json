@@ -45,7 +45,10 @@
             "email": "E-mail",
             "email.placeholder": "Your e-mail",
             "firstName": "First Name",
-            "lastName": "Last Name"
+            "lastName": "Last Name",
+            "entry": "Entry",
+            "exit": "Exit",
+            "correctTime": "Correct work time"
         },
         "messages": {
             "info": {
