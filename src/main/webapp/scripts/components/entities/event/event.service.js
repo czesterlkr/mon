@@ -11,6 +11,6 @@ angular.module('monApp')
                     return data;
                 }
             },
-            'update': { method:'PUT' }
+            'update': { method:'GET', url: 'api/event/update', isArray: true }
         });
     });

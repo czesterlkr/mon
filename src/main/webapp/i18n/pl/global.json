@@ -46,7 +46,10 @@
             "email": "E-mail",
             "email.placeholder": "e-mail",
             "firstName": "Imię",
-            "lastName": "Nazwisko"
+            "lastName": "Nazwisko",
+            "entry": "Wejście",
+            "exit": "Wyjście",
+            "correctTime": "Korekta czasu pracy"
         },
         "messages": {
             "info": {

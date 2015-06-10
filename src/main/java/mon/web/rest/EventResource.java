@@ -20,6 +20,7 @@ import javax.inject.Inject;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import java.net.URISyntaxException;
+import java.sql.Timestamp;
 import java.util.List;
 
 /**
@@ -39,11 +40,11 @@ public class EventResource {
      * POST  /events
      */
     @RequestMapping(value = "/events",
-        method = RequestMethod.GET,
-        produces = MediaType.APPLICATION_JSON_VALUE)
+            method = RequestMethod.GET,
+            produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<List<EventDTO>> getAll()
-        throws URISyntaxException {
+            throws URISyntaxException {
         List<Event> events = eventRepository.findByUserLogin(SecurityUtils.getCurrentLogin());
         return new ResponseEntity<List<EventDTO>>(Lists.transform(events, EventFunctional.toEventDTO()), HttpStatus.OK);
 
@@ -75,6 +76,29 @@ public class EventResource {
     public ResponseEntity<Void> update(@Valid @RequestBody Event event) throws URISyntaxException {
         log.debug("REST request to update Holiday : {}", event);
         eventRepository.save(event);
+        return ResponseEntity.ok().build();
+    }
+
+    /**
+     * POST  /events
+     */
+    @RequestMapping(value = "/event/update",
+            method = RequestMethod.GET,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    @Timed
+    public ResponseEntity<Void> updateEvent(@RequestParam(value = "id") Long id,
+                                            @RequestParam(value = "start") Long start,
+                                            @RequestParam(value = "end") Long end)
+            throws URISyntaxException {
+        Event eventToUpdate = eventRepository.findOneById(id);
+
+        Timestamp timestampStart = new Timestamp(start);
+        Timestamp timestampEnd = new Timestamp(end);
+
+//
+//        CONVERT TO LOCALDATATIME
+//
+
         return ResponseEntity.ok().build();
     }
 }

@@ -16,4 +16,8 @@ public interface EventRepository extends JpaRepository<Event, Long> {
     List<Event> findByUserLogin(String login);
 
     Event findOneByUserAndEndAtIsNull(User user);
+
+    Event findOneById(Long id);
+
+
 }
