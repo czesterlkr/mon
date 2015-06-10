@@ -5,7 +5,7 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-import mon.domain.util.CustomDateTimeDeserializer;
+import mon.domain.util.ISO8061LocalDateTimeDeserializer;
 import mon.domain.util.CustomLocalDateTimeSerializer;
 import org.hibernate.annotations.Type;
 import org.joda.time.LocalDateTime;
@@ -31,13 +31,13 @@ public class Event implements Serializable {
     @NotNull
     @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDateTime")
     @JsonSerialize(using = CustomLocalDateTimeSerializer.class)
-    @JsonDeserialize(using = CustomDateTimeDeserializer.class)
+    @JsonDeserialize(using = ISO8061LocalDateTimeDeserializer.class)
     @Column(name = "start_at", nullable = false)
     private LocalDateTime startAt;
 
     @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDateTime")
     @JsonSerialize(using = CustomLocalDateTimeSerializer.class)
-    @JsonDeserialize(using = CustomDateTimeDeserializer.class)
+    @JsonDeserialize(using = ISO8061LocalDateTimeDeserializer.class)
     @Column(name = "end_at", nullable = true)
     private LocalDateTime endAt;
 

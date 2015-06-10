@@ -10,6 +10,7 @@
                 "kindOfHoliday": "Kind Of Holiday",
                 "statusOfHoliday": "Status Of Holiday",
                 "holiday": "Holiday",
+                "event" : "Calendar",
                 "additionalEntity": "JHipster will add addtional entities"
             },
             "account": {

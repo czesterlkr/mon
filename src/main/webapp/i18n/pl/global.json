@@ -10,6 +10,7 @@
                 "kindOfHoliday": "Rodzaje urlopów",
                 "statusOfHoliday": "Statusy urlopów",
                 "holiday": "Urlop",
+                "event" : "Kalendarz",
                 "additionalEntity": "JHipster will add addtional entities"
             },
             "account": {

@@ -20,7 +20,7 @@ angular.module('monApp')
             Project.update($scope.project,
                 function () {
                     $scope.loadAll();
-                    $('#saveProjectModal').modal('hide');
+                    $('#updateEventModal').modal('hide');
                     $scope.clear();
                 });
         };
@@ -28,7 +28,7 @@ angular.module('monApp')
         $scope.update = function (id) {
             Project.get({id: id}, function(result) {
                 $scope.project = result;
-                $('#saveProjectModal').modal('show');
+                $('#updateEventModal').modal('show');
             });
         };
 
